@@ -20,7 +20,7 @@ public class Bot {
 	//TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
 	
 	public Bot() {
-		String token="MTE0MzExNzAzNDE2MzU1MjMwNg.GXiZR6.reC3LalQLRzZ6hHpvNEMScay-8e2zr53ZJCqKI";
+		String token="YOUR TOKEN HERE";
 		DefaultShardManagerBuilder builder=DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS);
 		builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 		builder.setActivity(Activity.listening("Linkin Park"));
