@@ -68,9 +68,15 @@ public class BotEventManager {
 	}
 	
 	public String show() {
-		
-		return Arrays.toString(responses.toArray());
-	}
+		String resp="-------------------------------COMMAND LIST-------------------------------\r";
 	
+		Iterator<Response> it= responses.iterator();
+		while(it.hasNext()) {
+			resp=resp+it.next().toString()+"\r";
+			
+		}
+		
+		return resp;
+	}
 	
 }

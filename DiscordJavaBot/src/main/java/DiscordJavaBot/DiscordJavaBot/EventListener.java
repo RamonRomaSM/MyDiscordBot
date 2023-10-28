@@ -19,11 +19,9 @@ public class EventListener extends ListenerAdapter{
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		String aut=event.getAuthor()+"";
-		if(!aut.contains("MiBot")) {	
+		if(!event.getAuthor().isBot()&&!event.getAuthor().isSystem()) {
 			manager.answer(event);
 		}
-		
-		
 	}
 
 	
