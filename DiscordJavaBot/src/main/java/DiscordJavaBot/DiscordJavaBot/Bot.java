@@ -15,11 +15,9 @@ import okhttp3.internal.http2.Http2Connection.Listener;
 
 public class Bot {
 	private final ShardManager shardmanager;
-	
-	
 	/*TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
 	* 
-	* TODO: boton de salir
+	* TODO: boton de salir?
 	*/
 	public Bot() {
 		String token="YOUR TOKEN HERE";
@@ -31,31 +29,7 @@ public class Bot {
 		shardmanager=builder.build();
 	}
 	
-	
-	
-	
 	public ShardManager getShardmanager() {
 		return shardmanager;
 	}
-
-
-
-
-	public static void main(String[] args) {
-		try {
-			Bot bot=new Bot();
-		} catch (Exception e) {
-			System.err.println("PUEDE QUE EL TOKEN SEA INVALIDO");
-		}
-		
-		
-				
-				
-		
-		
-		
-	}
-	
-	
-	
 }
