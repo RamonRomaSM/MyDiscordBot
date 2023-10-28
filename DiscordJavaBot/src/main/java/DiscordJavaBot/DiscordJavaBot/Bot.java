@@ -15,6 +15,7 @@ import okhttp3.internal.http2.Http2Connection.Listener;
 
 public class Bot {
 	private final ShardManager shardmanager;
+	
 	/*TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
 	* 
 	* TODO: boton de salir?
@@ -27,7 +28,7 @@ public class Bot {
 	*/
 	
 	public Bot(BotEventManager m) {
-		String token="YOUR TOKEN HERE";
+		String token="MTE0MzExNzAzNDE2MzU1MjMwNg.GL1Kl0.aQPOeegnsjRdwQNLOAdMJtswXUDA3NEB0N0Yr4";		
 		DefaultShardManagerBuilder builder=DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS);
 		builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 		builder.setActivity(Activity.listening("Linkin Park"));

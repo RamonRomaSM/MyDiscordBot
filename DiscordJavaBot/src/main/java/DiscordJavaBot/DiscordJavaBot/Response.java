@@ -1,6 +1,7 @@
 package DiscordJavaBot.DiscordJavaBot;
 
 import net.dv8tion.jda.api.events.Event;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public abstract class Response {
 	private String id;
@@ -13,7 +14,7 @@ public abstract class Response {
 	public String getId() {
 		return id;
 	}
-	public abstract void resolve(Event event);
+	public abstract void resolve(MessageReceivedEvent event);
 	
 	@Override
 	public boolean equals(Object obj) {

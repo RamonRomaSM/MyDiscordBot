@@ -19,17 +19,8 @@ public class EventListener extends ListenerAdapter{
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		String aut=event.getAuthor()+"";
-		if(!aut.contains("MiBot")) {
-			
-			//AQUI ANALIZAR COMANDOS
-			
-			
-			
-			Message mensaje=event.getMessage();
-			mensaje.reply("hola");
-			String resp=mensaje.getContentRaw();
-			
-			event.getChannel().sendMessage(resp).queue();
+		if(!aut.contains("MiBot")) {	
+			manager.answer(event);
 		}
 		
 		
