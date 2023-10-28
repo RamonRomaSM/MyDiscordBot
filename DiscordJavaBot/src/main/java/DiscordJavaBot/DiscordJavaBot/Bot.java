@@ -17,8 +17,10 @@ public class Bot {
 	private final ShardManager shardmanager;
 	
 	
-	//TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
-	
+	/*TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
+	* 
+	* TODO: boton de salir
+	*/
 	public Bot() {
 		String token="YOUR TOKEN HERE";
 		DefaultShardManagerBuilder builder=DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS);
