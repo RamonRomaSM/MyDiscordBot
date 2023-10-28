@@ -63,7 +63,7 @@ public class Main {
 		
 		try {
 			
-			Bot bot=new Bot(manager,"MTE0MzExNzAzNDE2MzU1MjMwNg.GjpDR3._hOCVev9QObhQ9XgmXtiGr-KCnBt1pjFrRoSRI");
+			Bot bot=new Bot(manager,"YOUR TOKEN HERE");
 		} catch (Exception e) {
 			System.err.println("PUEDE QUE EL TOKEN SEA INVALIDO");
 		}
