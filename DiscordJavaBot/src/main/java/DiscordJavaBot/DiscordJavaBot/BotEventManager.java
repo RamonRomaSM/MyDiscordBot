@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.events.Event;
 public class BotEventManager {
 	private Set<Response>responses;
 
-	public BotEventManager(String pref) {
+	public BotEventManager() {
 		
 		responses=new HashSet<Response>();
 	}

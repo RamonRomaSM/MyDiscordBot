@@ -18,13 +18,20 @@ public class Bot {
 	/*TODO: cuando lo suba a github, borrar mi token, y poner "token" para que no pillen mi codigo
 	* 
 	* TODO: boton de salir?
+	* 
+	* TODO: el bot tiene comandos y noncommand
+	* 		los comandos empiezan por /
+	* 
+	* TODO: hacer que el bot sea "reprogramable"
+	* 
 	*/
-	public Bot() {
+	
+	public Bot(BotEventManager m) {
 		String token="YOUR TOKEN HERE";
 		DefaultShardManagerBuilder builder=DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS);
 		builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 		builder.setActivity(Activity.listening("Linkin Park"));
-		builder.addEventListeners(new DiscordJavaBot.DiscordJavaBot.EventListener());
+		builder.addEventListeners(new DiscordJavaBot.DiscordJavaBot.EventListener(m));
 		
 		shardmanager=builder.build();
 	}

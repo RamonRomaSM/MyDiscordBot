@@ -8,7 +8,14 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.utils.messages.MessageCreateData;
 
 public class EventListener extends ListenerAdapter{
-
+	private BotEventManager manager;
+	
+	public EventListener(BotEventManager m) {
+		super();
+		manager=m;
+	}
+	
+	
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		String aut=event.getAuthor()+"";
