@@ -17,9 +17,7 @@ import net.dv8tion.jda.api.utils.TimeFormat;
 import net.dv8tion.jda.internal.requests.WebSocketClient;
 
 public class Main {
-	/*
-	 * TODO:	unirse, salirse, dime la hora, help, lo de las buenas noches, lo de añadir contestaciones
-	 * */
+
 	public static void main(String[] args) {
 		
 		BotEventManager manager=new BotEventManager();

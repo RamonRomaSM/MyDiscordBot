@@ -44,7 +44,7 @@ public class BotEventManager {
 	
 	public void answer(MessageReceivedEvent event) {
 		Message mensaje=event.getMessage();
-		String req=mensaje.getContentRaw();//este es el mensaje 
+		String req=mensaje.getContentRaw();//this is the message
 		
 		Response asked=new Response(req,"This is a Mock") {
 			@Override
@@ -68,11 +68,11 @@ public class BotEventManager {
 	}
 	
 	public String show() {
-		String resp="-------------------------------COMMAND LIST-------------------------------\r";
+		String resp="COMMAND LIST:\r";
 	
 		Iterator<Response> it= responses.iterator();
 		while(it.hasNext()) {
-			resp=resp+it.next().toString()+"\r";
+			resp=" *"+resp+it.next().toString()+"\r";
 			
 		}
 		
