@@ -72,7 +72,7 @@ public class BotEventManager {
 	
 		Iterator<Response> it= responses.iterator();
 		while(it.hasNext()) {
-			resp=" *"+resp+it.next().toString()+"\r";
+			resp=resp+it.next().toString()+"\r";
 			
 		}
 		
