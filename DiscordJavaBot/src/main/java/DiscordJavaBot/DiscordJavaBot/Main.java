@@ -53,13 +53,9 @@ public class Main {
 			@Override
 			public void resolve(MessageReceivedEvent event) {
 				Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("Canada/Pacific"));
-				int hour12 = cal.get(Calendar.HOUR); // 0..11
-				int minutes = cal.get(Calendar.MINUTE); // 0..59
-				boolean am = cal.get(Calendar.AM_PM) == Calendar.AM;
 				
-				String canada=hour12+":"+minutes;
-				if(am) {canada=canada+" AM   Canada/Pacific";}
-				else {canada=canada+" PM   Canada/Pacific";}
+				String canada=cal.get(Calendar.HOUR)+":"+((cal.get(Calendar.MINUTE)<=9)?"0"+cal.get(Calendar.MINUTE):cal.get(Calendar.MINUTE))+" "+(((cal.get(Calendar.AM_PM)==0)?"AM":"PM")+" Canada/Pacific");
+				
 				
 				String resp=LocalTime.now().toString().split(":")[0]+":"+LocalTime.now().toString().split(":")[1]+"   "+Locale.getDefault().toString()+"\r"+canada;
 				event.getChannel().sendMessage(resp).queue();
@@ -79,11 +75,7 @@ public class Main {
 			Bot bot=new Bot(manager,"YOUR TOKEN HERE");
 		} catch (Exception e) {
 			System.err.println("PUEDE QUE EL TOKEN SEA INVALIDO");
-		}
+		}		
 		
-		
-		
-		
-	   
 	}
 }
