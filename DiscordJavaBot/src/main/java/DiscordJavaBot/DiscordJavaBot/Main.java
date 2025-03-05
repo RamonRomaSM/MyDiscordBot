@@ -11,7 +11,9 @@ public class Main {
 		
 		BotEventManager manager=new BotEventManager();
 		manager.addResp(new Response("!!talk","Habla con el bot"),new TalkService());
-
+		
+		
+		
 		try {
 			File f = new File("discord_KEY.txt");
 			if(!f.exists()) {f.createNewFile();}

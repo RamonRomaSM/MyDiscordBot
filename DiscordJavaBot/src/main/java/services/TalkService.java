@@ -35,7 +35,6 @@ public class TalkService extends GenericService{
 	
 	@Override
 	public boolean answer(String args, Event event) {
-		
 		MessageReceivedEvent messageEvent = (MessageReceivedEvent) event;
 		try {
             String apiUrl = "https://api.aimlapi.com/v1/chat/completions";
