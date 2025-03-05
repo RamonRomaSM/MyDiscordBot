@@ -1,11 +1,15 @@
 package DiscordJavaBot.DiscordJavaBot;
 
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import services.GenericService;
 
-public abstract class Response {
+public class Response {
 	private String id;
 	private String description;
+	private GenericService service;
+	
 	public Response(String id,String description) {
 		this.id=id;
 		this.description=description;
@@ -14,7 +18,11 @@ public abstract class Response {
 	public String getId() {
 		return id;
 	}
-	public abstract void resolve(MessageReceivedEvent event);
+	public void resolve(MessageReceivedEvent event) {
+		Message mensaje=event.getMessage();
+		String req=mensaje.getContentRaw().split(" ")[0];//this is the command
+		service.answer(event.getMessage().getContentRaw().substring(req.length()), event);
+	}
 	
 	@Override
 	public boolean equals(Object obj) {

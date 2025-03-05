@@ -3,7 +3,6 @@ package services;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -13,12 +12,12 @@ import java.nio.charset.StandardCharsets;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public class TalkService {
-	private String question;
+public class TalkService extends GenericService{
 	private MessageReceivedEvent event;
-	private String apiKey;//TODO: gestionar varias desde un fichero
+	private String apiKey;
 	private int currentKey = 1;//we start by using the first key in the file
 	
 	public TalkService() {
@@ -34,13 +33,16 @@ public class TalkService {
 		
 	}
 	
-	public boolean answer(String question, MessageReceivedEvent event) {
+	@Override
+	public boolean answer(String args, Event event) {
+		
+		MessageReceivedEvent messageEvent = (MessageReceivedEvent) event;
 		try {
             String apiUrl = "https://api.aimlapi.com/v1/chat/completions";
            
             String jsonInputString = "{"
                     + "\"model\": \"mistralai/Mistral-7B-Instruct-v0.2\","
-                    + "\"messages\": [{\"role\": \"user\", \"content\": \""+question+"\"}],"
+                    + "\"messages\": [{\"role\": \"user\", \"content\": \""+args+"\"}],"
                     + "\"temperature\": 0.7"
                     + "}";
 
@@ -70,7 +72,7 @@ public class TalkService {
             JSONArray choices = jsonResponse.getJSONArray("choices");
             String message = choices.getJSONObject(0).getJSONObject("message").getString("content");
         	System.out.println(message);
-            event.getChannel().sendMessage(message).queue();
+        	messageEvent.getChannel().sendMessage(message).queue();
 
         } catch (Exception e) {
         	System.out.println("failed key: "+apiKey);
@@ -80,7 +82,7 @@ public class TalkService {
         		return false;//All tokens are consumed
         	}
         	else {//we changed the key, now we re-ask the llm
-        		answer(question,event);
+        		answer(args,event);
         	}
         }
 		
@@ -111,14 +113,6 @@ public class TalkService {
 
 	public void setEvent(MessageReceivedEvent event) {
 		this.event = event;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
 	}
 	
 }
