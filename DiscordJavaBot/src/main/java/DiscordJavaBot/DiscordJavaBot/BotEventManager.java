@@ -15,8 +15,11 @@ public class BotEventManager {
 	private Set<Response>responses;
 
 	public BotEventManager() {
+		//TODO: iniciar los scripts
 		
 		responses=new HashSet<Response>();
+		
+		
 	}
 	
 	public void addResp(Response resp) {
@@ -44,7 +47,7 @@ public class BotEventManager {
 	
 	public void answer(MessageReceivedEvent event) {
 		Message mensaje=event.getMessage();
-		String req=mensaje.getContentRaw();//this is the message
+		String req=mensaje.getContentRaw().split(" ")[0];//this is the message
 		
 		Response asked=new Response(req,"This is a Mock") {
 			@Override
@@ -62,9 +65,7 @@ public class BotEventManager {
 					break;
 				}
 			}
-		}
-		
-		
+		}		
 	}
 	
 	public String show() {
@@ -73,9 +74,7 @@ public class BotEventManager {
 		Iterator<Response> it= responses.iterator();
 		while(it.hasNext()) {
 			resp=resp+it.next().toString()+"\r";
-			
 		}
-		
 		return resp;
 	}
 	

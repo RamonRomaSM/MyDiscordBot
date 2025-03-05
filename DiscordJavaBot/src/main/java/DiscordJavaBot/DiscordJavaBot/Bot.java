@@ -17,7 +17,8 @@ public class Bot {
 	private final ShardManager shardmanager;
 	
 	
-	public Bot(BotEventManager m,String token) {		
+	public Bot(BotEventManager m,String token) {	
+		
 		DefaultShardManagerBuilder builder=DefaultShardManagerBuilder.createDefault(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS,GatewayIntent.GUILD_VOICE_STATES);
 		builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 		builder.setActivity(Activity.listening("Linkin Park"));
@@ -30,4 +31,6 @@ public class Bot {
 	public ShardManager getShardmanager() {
 		return shardmanager;
 	}
+	
+	
 }
