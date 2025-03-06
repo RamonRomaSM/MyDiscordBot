@@ -50,7 +50,7 @@ public class BotEventManager {
 		if(!defaultCommands.contains(req)) {
 			Response asked=new Response(req,"This is a Mock");
 			if(responses.get(asked)==null) {
-				event.getChannel().sendMessage("Comando no definido").queue();
+				event.getChannel().sendMessage("Comando no definido, !!comandos para ver el listado").queue();
 			}
 			else{
 				responses.get(asked).answer(event.getMessage().getContentRaw().substring(req.length()), event);
@@ -62,7 +62,7 @@ public class BotEventManager {
 	}
 	
 	public String show() {
-		String resp="COMMAND LIST:\r";
+		String resp="COMANDOS:\r";
 		
 		Iterator<Response> it= responses.keySet().iterator();
 		while(it.hasNext()) {

@@ -19,7 +19,7 @@ public class EventListener extends ListenerAdapter{
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		String aut=event.getAuthor()+"";
-		if(!event.getAuthor().isBot()&&!event.getAuthor().isSystem()) {
+		if(!event.getAuthor().isBot()&&!event.getAuthor().isSystem()&&event.getMessage().getContentRaw().startsWith("!!")) {
 			manager.answer(event);
 		}
 	}

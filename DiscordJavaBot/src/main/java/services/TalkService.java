@@ -19,8 +19,12 @@ public class TalkService extends GenericService{
 	private MessageReceivedEvent event;
 	private String apiKey;
 	private int currentKey = 1;//we start by using the first key in the file
+	private JSONArray messages = new JSONArray();
+	
+	
 	
 	public TalkService() {
+		messages.put(new JSONObject().put("role", "system").put("content", "Eres un asistente útil que habla con acento y expresiones argentinas."));
 		try {
 			File f = new File("aimlapi_KEYS.txt");
 			if(!f.exists()) {f.createNewFile();}
@@ -38,13 +42,15 @@ public class TalkService extends GenericService{
 		MessageReceivedEvent messageEvent = (MessageReceivedEvent) event;
 		try {
             String apiUrl = "https://api.aimlapi.com/v1/chat/completions";
-           
-            String jsonInputString = "{"
-                    + "\"model\": \"mistralai/Mistral-7B-Instruct-v0.2\","
-                    + "\"messages\": [{\"role\": \"user\", \"content\": \""+args+"\"}],"
-                    + "\"temperature\": 0.7"
-                    + "}";
+            messages.put(new JSONObject().put("role", "user").put("content", args));
 
+            // Crear el JSON de la petición usando la variable jsonInputString
+            String jsonInputString = new JSONObject()
+                    .put("model", "mistralai/Mistral-7B-Instruct-v0.2")
+                    .put("messages", messages)
+                    .put("temperature", 0.7)
+                    .toString();
+ 
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -70,11 +76,11 @@ public class TalkService extends GenericService{
             JSONObject jsonResponse = new JSONObject(response.toString());
             JSONArray choices = jsonResponse.getJSONArray("choices");
             String message = choices.getJSONObject(0).getJSONObject("message").getString("content");
-        	System.out.println(message);
+        	System.out.println(messages);
         	messageEvent.getChannel().sendMessage(message).queue();
 
         } catch (Exception e) {
-        	System.out.println("failed key: "+apiKey);
+        	System.err.println("failed key: "+apiKey);
         	changeKey();
         	System.out.println("new key: "+apiKey);
         	if(apiKey == null) {

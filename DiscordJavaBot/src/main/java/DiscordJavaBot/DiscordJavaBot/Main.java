@@ -3,6 +3,8 @@ package DiscordJavaBot.DiscordJavaBot;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+
+import services.AudioService;
 import services.TalkService;
 
 public class Main {
@@ -11,7 +13,7 @@ public class Main {
 		
 		BotEventManager manager=new BotEventManager();
 		manager.addResp(new Response("!!talk","Habla con el bot"),new TalkService());
-		
+		manager.addResp(new Response("!!play","Pone musica"),new AudioService());
 		
 		
 		try {
