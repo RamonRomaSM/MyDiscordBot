@@ -26,7 +26,7 @@ public class Main {
 			
 			Bot bot=new Bot(manager,key);
 		} catch (Exception e) {
-			System.err.println("PUEDE QUE EL TOKEN SEA INVALIDO, ASEGURATE DE PONER EL TOKEN EN EL FICHERO discord_KEY.tx");
+			System.out.println("PUEDE QUE EL TOKEN SEA INVALIDO, ASEGURATE DE PONER EL TOKEN EN EL FICHERO discord_KEY.tx");
 		}		
 		
 	}
